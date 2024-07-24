@@ -1,0 +1,21 @@
+# Question 2 
+# Task 1 
+
+# Assuming we have a list of members loaded into Python
+members = [
+    {'id': '001', 'name': 'John Doe', 'age': 28},
+    {'id': '002', 'name': 'Jane Smith', 'age': 24},
+    {'id': '003', 'name': 'Emily Johnson', 'age': 35},
+    # ... more members
+]
+
+def get_members_in_age_range(start_age, end_age):
+    """Retrieve the details of members whose ages fall between start_age and end_age."""
+    # Filter members using list comprehension
+    members_in_range = [member for member in members if start_age <= member['age'] <= end_age]
+    
+    for member in members_in_range:
+        print(f"Member ID: {member['id']}, Name: {member['name']}, Age: {member['age']}")
+
+# Example usage:
+get_members_in_age_range(25, 30)
