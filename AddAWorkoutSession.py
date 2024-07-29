@@ -1,18 +1,9 @@
 def add_workout_session(member_id, date, duration_minutes, calories_burned):
     try:
-        conn = mysql.connector.connect(
-            host='your_host',
-            user='your_user',
-            password='your_password',
-            database='your_database'
-        )
-        cursor = conn.cursor()
-        query = "INSERT INTO WorkoutSessions (member_id, date, duration_minutes, calories_burned) VALUES (%s, %s, %s, %s)"
+        # SQL query to add a new workout session
+        query = "INSERT INTO WorkoutSessions (member_id, date, duration_minutes, calories_burned) VALUES (?, ?, ?, ?)"
         cursor.execute(query, (member_id, date, duration_minutes, calories_burned))
-        conn.commit()
+        connection.commit()
         print("Workout session added successfully.")
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-    finally:
-        cursor.close()
-        conn.close()
+    except Exception as e:
+        print(f"An error occurred: {e}")
