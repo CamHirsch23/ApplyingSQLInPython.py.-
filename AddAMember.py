@@ -1,20 +1,9 @@
-import mysql.connector
-
 def add_member(id, name, age):
     try:
-        conn = mysql.connector.connect(
-            host='your_host',
-            user='your_user',
-            password='your_password',
-            database='your_database'
-        )
-        cursor = conn.cursor()
-        query = "INSERT INTO Members (id, name, age) VALUES (%s, %s, %s)"
+        # SQL query to add a new member
+        query = "INSERT INTO Members (id, name, age) VALUES (?, ?, ?)"
         cursor.execute(query, (id, name, age))
-        conn.commit()
+        connection.commit()
         print("Member added successfully.")
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-    finally:
-        cursor.close()
-        conn.close()
+    except Exception as e:
+        print(f"An error occurred: {e}")
